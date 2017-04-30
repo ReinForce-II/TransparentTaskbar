@@ -1,4 +1,4 @@
-#include <windows.h>
+#include "stdafx.h"
 void SetWindowBlur(HWND hWnd)
 {
 	const HINSTANCE hModule = LoadLibrary(TEXT("user32.dll"));
@@ -32,6 +32,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPreInst, LPSTR pCmdLine, int 
 {
 	while (true) {
 		HWND taskbar = FindWindow(L"Shell_TrayWnd", NULL);
-		SetWindowBlur(taskbar); Sleep((DWORD)100);
+		HWND startmenu = FindWindow(L"Windows.UI.Core.CoreWindow", L"Start");
+		SetWindowBlur(taskbar);
+		SetWindowBlur(startmenu);
+		Sleep((DWORD)100);
 	}
 }
